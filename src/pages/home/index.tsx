@@ -14,8 +14,9 @@ export default function Home() {
   return (
     <div className="mt-5 grid grid-cols-1 gap-8">
       <div
-        className={`grid ${isSidebarExpanded ? "md:grid-cols-1" : "md:grid-cols-2"
-          } mdb:grid-cols-2 xl:grid-cols-3 gap-8`}
+        className={`grid ${
+          isSidebarExpanded ? "md:grid-cols-1" : "md:grid-cols-2"
+        } mdb:grid-cols-2 xl:grid-cols-3 gap-8`}
       >
         <TotalBalance />
         <AreaChartBox />

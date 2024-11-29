@@ -1,4 +1,4 @@
-export default function WalletIcon({ isActive }: { isActive: boolean }) {
+export default function CategoryIcon({ isActive }: { isActive: boolean }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

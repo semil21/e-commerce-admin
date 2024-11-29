@@ -5,14 +5,14 @@ import UserIcon from "../../../assets/icons/fill/User";
 import EyeIcon from "../../../assets/icons/fill/Eye";
 import { useState } from "react";
 import EyeSlashIcon from "../../../assets/icons/fill/EyeSlash";
-import loginImg from "../../../assets/pictures/login/wallpapersden.com_trees-mountains-fog_6000x4000.jpg";
+import loginImg from "../../../assets/pictures/login/logo.png";
 import { HoverBorderGradient } from "../../ui/HoverBorderGrdaient";
 import { useLoginMutation } from "../../../hooks/api/useAuthApi";
 import { FlipWords } from "../../ui/FlipWords";
 import { useTranslation } from "react-i18next";
 
 export default function LoginForm() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -20,9 +20,9 @@ export default function LoginForm() {
     reset,
   } = useForm<loginProps>({
     defaultValues: {
-      username: "mor_2314",
-      password: "83r5^_"
-    }
+      email: "",
+      password: "",
+    },
   });
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
@@ -63,8 +63,8 @@ export default function LoginForm() {
         </div>
         <div className="space-y-6 w-full">
           <Input
-            {...register("username", {
-              required: "Username Is Required",
+            {...register("email", {
+              required: "Email Is Required",
             })}
             classNames={{
               label: ["text-xs xl:text-base 3xl:text-lg"],
@@ -76,8 +76,8 @@ export default function LoginForm() {
             size="sm"
             className="font-poppinsRegular"
             endContent={<UserIcon />}
-            isInvalid={Boolean(errors.username)}
-            errorMessage={errors.username?.message}
+            isInvalid={Boolean(errors.email)}
+            errorMessage={errors.email?.message}
             label={t("username")}
           />
           <Input

@@ -10,7 +10,7 @@ axios.interceptors.request.use(
 
   function (error) {
     return Promise.reject(error);
-  }
+  },
 );
 
 axios.interceptors.response.use(
@@ -20,7 +20,7 @@ axios.interceptors.response.use(
   function (error) {
     toast.error(error.response.data);
     return Promise.reject(error);
-  }
+  },
 );
 
 const methods = {
