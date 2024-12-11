@@ -1,4 +1,3 @@
-// import { categoryProps } from "../../interfaces/category.interface";
 import { categoryProps } from "../../interfaces/category.interface";
 import httpService from "../httpService";
 

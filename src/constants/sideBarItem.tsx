@@ -25,8 +25,8 @@ export default function sideBarItem(pathname: string) {
       href: "/category",
     },
     {
-      title: "Product",
-      Icon: <ProductIcon isActive={pathname === "/product"} />,
+      title: "Add Product",
+      Icon: <ProductIcon isActive={pathname === "/addProduct"} />,
       href: "/product",
     },
     {

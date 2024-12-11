@@ -1,5 +1,5 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import ProductPage from "../pages/product";
+import AddProductPage from "../pages/addProduct";
 
 export const Route = createLazyFileRoute("/_auth/product")({
   component: RouteComponent,
@@ -8,7 +8,7 @@ export const Route = createLazyFileRoute("/_auth/product")({
 function RouteComponent() {
   return (
     <div>
-      <ProductPage />
+      <AddProductPage />
     </div>
   );
 }
