@@ -9,9 +9,9 @@ export default function CategoryIcon({ isActive }: { isActive: boolean }) {
       <g
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       >
         <circle cx="17" cy="7" r="3" />
         <circle cx="7" cy="17" r="3" />
