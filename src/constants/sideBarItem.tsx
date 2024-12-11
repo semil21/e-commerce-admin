@@ -4,7 +4,8 @@ import CommentIcon from "../assets/icons/fill/Comment";
 import MessageIcon from "../assets/icons/fill/Message";
 import ChartIcon from "../assets/icons/fill/Chart";
 import CreditIcon from "../assets/icons/fill/Credit";
-import CategoryIcon from "../assets/icons/fill/category";
+import CategoryIcon from "../assets/icons/fill/Category";
+import ProductIcon from "../assets/icons/fill/Product";
 
 export default function sideBarItem(pathname: string) {
   return [
@@ -22,6 +23,11 @@ export default function sideBarItem(pathname: string) {
       title: "Category",
       Icon: <CategoryIcon isActive={pathname === "/category"} />,
       href: "/category",
+    },
+    {
+      title: "Product",
+      Icon: <ProductIcon isActive={pathname === "/product"} />,
+      href: "/product",
     },
     {
       title: "comments",
