@@ -1,10 +1,14 @@
 import { create } from "zustand";
 import { productInterface } from "../interfaces/product.interface";
-import { addNewProductRecord } from "../services/api/product.api";
+import {
+  addNewProductRecord,
+  getAllProductsRecords,
+} from "../services/api/product.api";
 
 interface productProps {
   allProducts: productInterface[];
   addProduct: (data: productInterface) => Promise<void>;
+  getAllProducts: () => Promise<void>;
 }
 
 const useProductStore = create<productProps>((set) => ({
@@ -15,10 +19,24 @@ const useProductStore = create<productProps>((set) => ({
       const saveRecord = await addNewProductRecord(data);
 
       if (saveRecord.status === 200) {
-        set({ allProducts: saveRecord.data.response });
+        set((state) => ({
+          allProducts: [...state.allProducts, saveRecord.data.response],
+        }));
       }
     } catch (error) {
       console.log("Failed to add new product");
+    }
+  },
+
+  getAllProducts: async () => {
+    try {
+      const getRecord = await getAllProductsRecords();
+
+      if (getRecord.status === 200) {
+        set({ allProducts: getRecord.data.response });
+      }
+    } catch (error) {
+      console.log("Failed to fetch all products");
     }
   },
 }));

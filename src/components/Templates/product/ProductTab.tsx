@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import AddNewProductTab from "./AddProduct";
+import ProductSizeTab from "./ProductSizeTab";
+import ImageTab from "./ImageTab";
 
 const AddProductTab = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -50,7 +52,7 @@ const AddProductTab = () => {
               activeTab === 1 ? "text-indigo-600" : "text-gray-600"
             }`}
           >
-            Symptoms
+            Product Size
           </button>
           <button
             onClick={() => handleTabClick(2)}
@@ -58,16 +60,16 @@ const AddProductTab = () => {
               activeTab === 2 ? "text-indigo-600" : "text-gray-600"
             }`}
           >
-            Safety checklist
+            Images
           </button>
-          <button
+          {/* <button
             onClick={() => handleTabClick(3)}
             className={`inline-flex items-center justify-center px-8 py-4 text-sm font-medium w-[200px] text-[16px] font-boldtransition ${
               activeTab === 3 ? "text-indigo-600" : "text-gray-600"
             }`}
           >
             Local regulations
-          </button>
+          </button> */}
         </nav>
         <div
           className="border-t-2 border-indigo-600 absolute left-0 bottom-0 transition-all duration-500"
@@ -77,16 +79,12 @@ const AddProductTab = () => {
 
       <div className="tab-content mt-4">
         {activeTab === 0 && <AddNewProductTab />}
-        {activeTab === 1 && <SymptomsTab />}
-        {activeTab === 2 && <SafetyChecklistTab />}
-        {activeTab === 3 && <LocalRegulationsTab />}
+        {activeTab === 1 && <ProductSizeTab />}
+        {activeTab === 2 && <ImageTab />}
+        {/* {activeTab === 3 && <LocalRegulationsTab />} */}
       </div>
     </div>
   );
 };
-
-const SymptomsTab = () => <div>Symptoms content here</div>;
-const SafetyChecklistTab = () => <div>Safety checklist content here</div>;
-const LocalRegulationsTab = () => <div>Local regulations content here</div>;
 
 export default AddProductTab;
