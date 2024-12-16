@@ -121,7 +121,7 @@ const CategoryTable = () => {
               </button>
             </div>
 
-            <div className="p-4">
+            <div className="p-4 border-2">
               <div className="max-w-sm">
                 <label className="block text-sm font-medium mb-2 dark:text-white">
                   Category Name
@@ -129,7 +129,7 @@ const CategoryTable = () => {
                 <input
                   type="text"
                   id="category-name-input"
-                  className="py-3 px-4 block w-[450px] border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                  className="py-3 px-4 block w-[450px] border border-black rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                   placeholder="Enter Category Name"
                   {...register("name")}
                 />
@@ -156,7 +156,7 @@ const CategoryTable = () => {
         </div>
       )}
 
-      <div className="relative overflow-x-auto shadow-md sm:rounded-xl">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-xl ">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>

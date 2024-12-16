@@ -6,6 +6,7 @@ import ChartIcon from "../assets/icons/fill/Chart";
 import CreditIcon from "../assets/icons/fill/Credit";
 import CategoryIcon from "../assets/icons/fill/Category";
 import ProductIcon from "../assets/icons/fill/Product";
+import ViewProductIcon from "../assets/icons/fill/ViewProduct";
 
 export default function sideBarItem(pathname: string) {
   return [
@@ -28,6 +29,11 @@ export default function sideBarItem(pathname: string) {
       title: "Add Product",
       Icon: <ProductIcon isActive={pathname === "/addProduct"} />,
       href: "/product",
+    },
+    {
+      title: "View Product",
+      Icon: <ViewProductIcon isActive={pathname === "/viewProduct"} />,
+      href: "/viewProduct",
     },
     {
       title: "comments",

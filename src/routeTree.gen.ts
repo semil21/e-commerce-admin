@@ -21,6 +21,7 @@ import { Route as AuthImport } from './routes/_auth'
 const AuthIndexLazyImport = createFileRoute('/_auth/')()
 const UnAuthLoginLazyImport = createFileRoute('/_unAuth/login')()
 const AuthWalletLazyImport = createFileRoute('/_auth/wallet')()
+const AuthViewProductLazyImport = createFileRoute('/_auth/viewProduct')()
 const AuthStatisticsLazyImport = createFileRoute('/_auth/statistics')()
 const AuthProductLazyImport = createFileRoute('/_auth/product')()
 const AuthPaymentsLazyImport = createFileRoute('/_auth/payments')()
@@ -57,6 +58,14 @@ const AuthWalletLazyRoute = AuthWalletLazyImport.update({
   path: '/wallet',
   getParentRoute: () => AuthRoute,
 } as any).lazy(() => import('./routes/_auth.wallet.lazy').then((d) => d.Route))
+
+const AuthViewProductLazyRoute = AuthViewProductLazyImport.update({
+  id: '/viewProduct',
+  path: '/viewProduct',
+  getParentRoute: () => AuthRoute,
+} as any).lazy(() =>
+  import('./routes/_auth.viewProduct.lazy').then((d) => d.Route),
+)
 
 const AuthStatisticsLazyRoute = AuthStatisticsLazyImport.update({
   id: '/statistics',
@@ -164,6 +173,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthStatisticsLazyImport
       parentRoute: typeof AuthImport
     }
+    '/_auth/viewProduct': {
+      id: '/_auth/viewProduct'
+      path: '/viewProduct'
+      fullPath: '/viewProduct'
+      preLoaderRoute: typeof AuthViewProductLazyImport
+      parentRoute: typeof AuthImport
+    }
     '/_auth/wallet': {
       id: '/_auth/wallet'
       path: '/wallet'
@@ -197,6 +213,7 @@ interface AuthRouteChildren {
   AuthPaymentsLazyRoute: typeof AuthPaymentsLazyRoute
   AuthProductLazyRoute: typeof AuthProductLazyRoute
   AuthStatisticsLazyRoute: typeof AuthStatisticsLazyRoute
+  AuthViewProductLazyRoute: typeof AuthViewProductLazyRoute
   AuthWalletLazyRoute: typeof AuthWalletLazyRoute
   AuthIndexLazyRoute: typeof AuthIndexLazyRoute
 }
@@ -208,6 +225,7 @@ const AuthRouteChildren: AuthRouteChildren = {
   AuthPaymentsLazyRoute: AuthPaymentsLazyRoute,
   AuthProductLazyRoute: AuthProductLazyRoute,
   AuthStatisticsLazyRoute: AuthStatisticsLazyRoute,
+  AuthViewProductLazyRoute: AuthViewProductLazyRoute,
   AuthWalletLazyRoute: AuthWalletLazyRoute,
   AuthIndexLazyRoute: AuthIndexLazyRoute,
 }
@@ -233,6 +251,7 @@ export interface FileRoutesByFullPath {
   '/payments': typeof AuthPaymentsLazyRoute
   '/product': typeof AuthProductLazyRoute
   '/statistics': typeof AuthStatisticsLazyRoute
+  '/viewProduct': typeof AuthViewProductLazyRoute
   '/wallet': typeof AuthWalletLazyRoute
   '/login': typeof UnAuthLoginLazyRoute
   '/': typeof AuthIndexLazyRoute
@@ -246,6 +265,7 @@ export interface FileRoutesByTo {
   '/payments': typeof AuthPaymentsLazyRoute
   '/product': typeof AuthProductLazyRoute
   '/statistics': typeof AuthStatisticsLazyRoute
+  '/viewProduct': typeof AuthViewProductLazyRoute
   '/wallet': typeof AuthWalletLazyRoute
   '/login': typeof UnAuthLoginLazyRoute
   '/': typeof AuthIndexLazyRoute
@@ -261,6 +281,7 @@ export interface FileRoutesById {
   '/_auth/payments': typeof AuthPaymentsLazyRoute
   '/_auth/product': typeof AuthProductLazyRoute
   '/_auth/statistics': typeof AuthStatisticsLazyRoute
+  '/_auth/viewProduct': typeof AuthViewProductLazyRoute
   '/_auth/wallet': typeof AuthWalletLazyRoute
   '/_unAuth/login': typeof UnAuthLoginLazyRoute
   '/_auth/': typeof AuthIndexLazyRoute
@@ -276,6 +297,7 @@ export interface FileRouteTypes {
     | '/payments'
     | '/product'
     | '/statistics'
+    | '/viewProduct'
     | '/wallet'
     | '/login'
     | '/'
@@ -288,6 +310,7 @@ export interface FileRouteTypes {
     | '/payments'
     | '/product'
     | '/statistics'
+    | '/viewProduct'
     | '/wallet'
     | '/login'
     | '/'
@@ -301,6 +324,7 @@ export interface FileRouteTypes {
     | '/_auth/payments'
     | '/_auth/product'
     | '/_auth/statistics'
+    | '/_auth/viewProduct'
     | '/_auth/wallet'
     | '/_unAuth/login'
     | '/_auth/'
@@ -340,6 +364,7 @@ export const routeTree = rootRoute
         "/_auth/payments",
         "/_auth/product",
         "/_auth/statistics",
+        "/_auth/viewProduct",
         "/_auth/wallet",
         "/_auth/"
       ]
@@ -372,6 +397,10 @@ export const routeTree = rootRoute
     },
     "/_auth/statistics": {
       "filePath": "_auth.statistics.lazy.tsx",
+      "parent": "/_auth"
+    },
+    "/_auth/viewProduct": {
+      "filePath": "_auth.viewProduct.lazy.tsx",
       "parent": "/_auth"
     },
     "/_auth/wallet": {

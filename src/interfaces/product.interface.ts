@@ -5,4 +5,5 @@ export interface productInterface {
   description?: string;
   material?: string;
   origin?: string;
+  status?: boolean;
 }
