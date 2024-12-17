@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useProductStore from "../../../stores/useProduct";
 import { useForm } from "react-hook-form";
-import { productInterface } from "../../../interfaces/product.interface";
+import { productProps } from "../../../interfaces/product.interface";
 import useSizeStore from "../../../stores/useSize";
 
 const ProductSizeTab = () => {
@@ -17,7 +17,7 @@ const ProductSizeTab = () => {
 
   const { addNewSize } = useSizeStore();
 
-  const onSubmit = async (data: productInterface) =>
+  const onSubmit = async (data: productProps) =>
     await addNewSize(data).then(() => reset());
 
   return (

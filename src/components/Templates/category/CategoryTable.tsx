@@ -35,8 +35,6 @@ const CategoryTable = () => {
 
   const { register, handleSubmit, reset, setValue } = useForm();
 
-  console.log("editCategoryId", editCategoryId);
-
   const onSubmit = async (data: categoryProps) => {
     if (editCategoryId) {
       await updateCategory(editCategoryId, data).then(() => {

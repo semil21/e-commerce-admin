@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import useCategoryStore from "../../../stores/useCategory";
 import { useEffect } from "react";
-import { productInterface } from "../../../interfaces/product.interface";
+import { productProps } from "../../../interfaces/product.interface";
 import useProductStore from "../../../stores/useProduct";
 
 const AddNewProductTab = () => {
@@ -17,7 +17,7 @@ const AddNewProductTab = () => {
     }
   }, []);
 
-  const onSubmit = async (data: productInterface) =>
+  const onSubmit = async (data: productProps) =>
     await addProduct(data).then(() => reset());
 
   return (

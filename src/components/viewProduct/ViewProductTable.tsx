@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import useProductStore from "../../stores/useProduct";
 import ProductDescription from "./modal/productDescription";
 import ProductSize from "./modal/productSize";
 import ProductImage from "./modal/productImage";
 
 const ViewProductTable = () => {
-  const { allProducts, getAllProducts } = useProductStore();
+  const { allProducts, getAllProducts, updateProductStatus } =
+    useProductStore();
 
   useEffect(() => {
     if (allProducts.length === 0) {
@@ -13,9 +14,13 @@ const ViewProductTable = () => {
     }
   }, []);
 
+  const handleStatusUpdate = async (id: string, status: boolean) => {
+    await updateProductStatus(id, status);
+  };
+
   return (
     <>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-xl ">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-xl mt-6 rounded-lg ">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -59,6 +64,7 @@ const ViewProductTable = () => {
                           ? "text-teal-500 border-gray-200"
                           : "text-red-500 border-gray-200"
                       }`}
+                      onClick={() => handleStatusUpdate(item._id, item.status)}
                     >
                       {item.status ? "Active" : "InActive"}
                     </button>
