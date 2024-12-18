@@ -2,21 +2,26 @@ import { create } from "zustand";
 import {
   addNewProductRecord,
   getAllProductsRecords,
+  getAllSizeOfProductRecord,
   updateProductRecord,
   updateProductStatusRecord,
 } from "../services/api/product.api";
 import { productProps } from "../interfaces/product.interface";
+import { sizeInterface } from "../interfaces/size.interface";
 
 interface productInterface {
   allProducts: productProps[];
+  productSizes: sizeInterface[];
   addProduct: (data: productProps) => Promise<void>;
   getAllProducts: () => Promise<void>;
   updateProductStatus: (id: string, status: boolean) => Promise<void>;
   updateProduct: (productId: string, data: productProps) => Promise<void>;
+  getAllProductSizes: (productId: string) => Promise<void>;
 }
 
 const useProductStore = create<productInterface>((set) => ({
   allProducts: [],
+  productSizes: [],
 
   addProduct: async (data: productProps) => {
     try {
@@ -76,6 +81,20 @@ const useProductStore = create<productInterface>((set) => ({
       }
     } catch (error) {
       console.log("Failed To Update Product");
+    }
+  },
+
+  getAllProductSizes: async (productId: string) => {
+    try {
+      const getRecords = await getAllSizeOfProductRecord(productId);
+
+      if (getRecords.status === 200) {
+        set({
+          productSizes: getRecords.data.response,
+        });
+      }
+    } catch (error) {
+      console.log("Failed to get all sizes of the product.");
     }
   },
 }));

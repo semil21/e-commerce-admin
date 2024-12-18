@@ -76,7 +76,7 @@ const ViewProductTable = () => {
                   </td>
                   <td className="px-6 py-4">
                     <a className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                      <ProductSize />
+                      <ProductSize product={item._id} />
                     </a>
                   </td>
                   <td className="px-6 py-4">

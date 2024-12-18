@@ -22,3 +22,9 @@ export const updateProductStatusRecord = async (
 export const updateProductRecord = async (id: string, data: productProps) => {
   return httpService.put(`http://localhost:3500/product/edit/${id}`, data);
 };
+
+export const getAllSizeOfProductRecord = async (productId: string) => {
+  return await httpService.get(
+    `http://localhost:3500/size/product-size/${productId}`,
+  );
+};
